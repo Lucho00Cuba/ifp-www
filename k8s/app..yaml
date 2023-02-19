@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ifp-webapp
+  labels:
+    app: front
+spec:
+  selector:
+    matchLabels:
+      app: front
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: front
+    spec:
+      containers:
+      - name: www
+        image: 0lucho0/ifp-www:${TAG}
+        env:
+        - name: DB_SERVER
+          value: mysql
+        - name: DB_NAME
+          value: app
+        - name: DB_USERNAME
+          value: root
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ifp-webapp
+  namespace: cloud-lucho00cuba
+  labels:
+    app: front
+  annotations:
+    dev.okteto.com/auto-ingress: "true"
+spec:
+  selector:
+    app: front
+  ports:
+    - protocol: TCP
+      port: 8080
