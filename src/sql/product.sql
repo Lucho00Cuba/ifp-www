@@ -1,8 +1,10 @@
 -- database: dbluis
 -- USE database;
 
+CREATE DATABASE IF NOT EXISTS Ventas;
+
 -- table: producto
-CREATE TABLE producto (
+CREATE TABLE IF NOT EXISTS producto (
     codproducto varchar(20),
     descripcion varchar(200),
     precio DECIMAL(5,2),

@@ -1,8 +1,10 @@
 -- database: dbluis
 -- USE database;
 
+CREATE DATABASE IF NOT EXISTS Ventas;
+
 -- table: cliente
-CREATE TABLE cliente (
+CREATE TABLE IF NOT EXISTS cliente (
     codcliente varchar(20),
     nombre varchar(100),
     apellidos varchar(200),

@@ -1,8 +1,10 @@
 -- database: dbluis
 -- USE database;
 
+CREATE DATABASE IF NOT EXISTS Ventas;
+
 -- table: albaranlinea
-CREATE TABLE albaranlinea (
+CREATE TABLE IF NOT EXISTS albaranlinea (
     numalbaran int(11),
     numlinea int(10),
     codproducto varchar(20),
